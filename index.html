@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Hoppy Road</title>
+    <meta name="description" content="Hop across roads, rivers and train tracks. How far can you go?" />
+    <meta name="theme-color" content="#7fb23a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Hoppy Road" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  </head>
+  <body>
+    <canvas id="game" aria-label="Game"></canvas>
+
+    <div id="hud" class="hud">
+      <div class="hud-left">
+        <div id="score" class="score">0</div>
+        <div id="best" class="best">TOP 0</div>
+      </div>
+      <div class="hud-right">
+        <div class="coins"><span id="coins">0</span><i class="coin-icon" aria-hidden="true"></i></div>
+        <button id="pause-btn" class="round-btn small" aria-label="Pause" hidden>❚❚</button>
+      </div>
+    </div>
+
+    <div id="challenge-banner" class="banner" hidden></div>
+
+    <!-- Start screen: taps on empty space fall through to the game. -->
+    <div id="start" class="overlay start">
+      <div class="start-top">
+        <h1 class="logo" id="logo"></h1>
+        <div id="start-banner" class="banner-inline" hidden></div>
+      </div>
+      <div class="start-bottom">
+        <div id="hint" class="hint"></div>
+        <div class="picker">
+          <button id="prev-char" class="round-btn" aria-label="Previous character">◀</button>
+          <div class="char-info">
+            <div id="char-name" class="char-name">Chicken</div>
+            <button id="unlock-btn" class="pill-btn gold" hidden></button>
+          </div>
+          <button id="next-char" class="round-btn" aria-label="Next character">▶</button>
+        </div>
+        <div class="menu-row">
+          <button id="mode-btn" class="pill-btn"></button>
+          <button id="scores-btn" class="round-btn" aria-label="Leaderboard">🏆</button>
+          <button id="sound-btn" class="round-btn" aria-label="Sound"></button>
+        </div>
+        <label class="name-row">
+          <span>Name</span>
+          <input id="name-input" type="text" maxlength="14" placeholder="Your name" autocomplete="off" />
+        </label>
+      </div>
+    </div>
+
+    <div id="gameover" class="overlay modal-wrap" hidden>
+      <div class="card">
+        <div id="go-cause" class="go-cause"></div>
+        <div id="go-score" class="go-score">0</div>
+        <div id="go-best" class="go-best"></div>
+        <div id="go-challenge" class="go-challenge" hidden></div>
+        <div id="go-coins" class="go-coins"></div>
+        <button id="again-btn" class="big-btn">Play again</button>
+        <div class="btn-row">
+          <button id="share-btn" class="pill-btn">Challenge friends</button>
+          <button id="menu-btn" class="pill-btn">Characters</button>
+        </div>
+        <ol id="go-board" class="board"></ol>
+      </div>
+    </div>
+
+    <div id="paused" class="overlay modal-wrap" hidden>
+      <div class="card">
+        <div class="go-cause">Paused</div>
+        <button id="resume-btn" class="big-btn">Resume</button>
+        <div class="btn-row">
+          <button id="quit-btn" class="pill-btn">Quit run</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="scores" class="overlay modal-wrap" hidden>
+      <div class="card">
+        <div class="go-cause">Best on this device</div>
+        <ol id="scores-board" class="board"></ol>
+        <button id="scores-close" class="big-btn">Close</button>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
